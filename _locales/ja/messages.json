@@ -1,0 +1,102 @@
+{
+  "appName": {
+    "message": "FlexSplit Window Manager"
+  },
+  "appDesc": {
+    "message": "現在のウィンドウのタブを、選択した分割数で画面に均等整列させます。"
+  },
+  "popupTitle": {
+    "message": "画面を均等分割"
+  },
+  "panelTagline": {
+    "message": "ウィンドウを均等に整列"
+  },
+  "splitHeading": {
+    "message": "分割数"
+  },
+  "statusIdle": {
+    "message": "レイアウトを選んで整列"
+  },
+  "scopeLabel": {
+    "message": "対象"
+  },
+  "scopeMonitorShort": {
+    "message": "モニター"
+  },
+  "scopeBrowserShort": {
+    "message": "ブラウザ"
+  },
+  "scopeAllShort": {
+    "message": "全部"
+  },
+  "scopeActiveMonitor": {
+    "message": "アクティブなモニター"
+  },
+  "scopeActiveWindow": {
+    "message": "アクティブなブラウザ"
+  },
+  "scopeAll": {
+    "message": "すべてのウィンドウ"
+  },
+  "splitLabel": {
+    "message": "$count$分割",
+    "placeholders": {
+      "count": { "content": "$1" }
+    }
+  },
+  "splitMax": {
+    "message": "MAX"
+  },
+  "splitMaxOption": {
+    "message": "最大（開いているタブ数・上限$max$）",
+    "placeholders": {
+      "max": { "content": "$1" }
+    }
+  },
+  "runButton": {
+    "message": "この分割数で実行"
+  },
+  "statusDone": {
+    "message": "$count$分割を実行しました。",
+    "placeholders": {
+      "count": { "content": "$1" }
+    }
+  },
+  "statusNoResponse": {
+    "message": "応答がありませんでした。"
+  },
+  "statusErrorPrefix": {
+    "message": "エラー: $msg$",
+    "placeholders": {
+      "msg": { "content": "$1" }
+    }
+  },
+  "statusFailed": {
+    "message": "実行に失敗しました。"
+  },
+  "mergeButton": {
+    "message": "1つにまとめる"
+  },
+  "mergeTitle": {
+    "message": "対象範囲のウィンドウを1つに集約します"
+  },
+  "statusMerged": {
+    "message": "$count$個のタブを1つにまとめました。",
+    "placeholders": {
+      "count": { "content": "$1" }
+    }
+  },
+  "errInvalidCount": {
+    "message": "分割数が正しくありません。"
+  },
+  "errNotEnoughTabs": {
+    "message": "タブの数が足りません（必要: $need$ / 現在: $have$）。",
+    "placeholders": {
+      "need": { "content": "$1" },
+      "have": { "content": "$2" }
+    }
+  },
+  "errNothingToMerge": {
+    "message": "まとめる対象がありません。"
+  }
+}

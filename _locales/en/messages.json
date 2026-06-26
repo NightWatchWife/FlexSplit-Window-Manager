@@ -1,0 +1,102 @@
+{
+  "appName": {
+    "message": "FlexSplit Window Manager"
+  },
+  "appDesc": {
+    "message": "Arrange the tabs of the current window evenly across the screen by a chosen split count."
+  },
+  "popupTitle": {
+    "message": "Split screen evenly"
+  },
+  "panelTagline": {
+    "message": "Tile windows evenly"
+  },
+  "splitHeading": {
+    "message": "Split into"
+  },
+  "statusIdle": {
+    "message": "Choose a layout to tile"
+  },
+  "scopeLabel": {
+    "message": "Scope"
+  },
+  "scopeMonitorShort": {
+    "message": "Monitor"
+  },
+  "scopeBrowserShort": {
+    "message": "Browser"
+  },
+  "scopeAllShort": {
+    "message": "All"
+  },
+  "scopeActiveMonitor": {
+    "message": "Active monitor"
+  },
+  "scopeActiveWindow": {
+    "message": "Active browser"
+  },
+  "scopeAll": {
+    "message": "All windows"
+  },
+  "splitLabel": {
+    "message": "$count$-way",
+    "placeholders": {
+      "count": { "content": "$1" }
+    }
+  },
+  "splitMax": {
+    "message": "MAX"
+  },
+  "splitMaxOption": {
+    "message": "Max (open tabs, up to $max$)",
+    "placeholders": {
+      "max": { "content": "$1" }
+    }
+  },
+  "runButton": {
+    "message": "Split with this count"
+  },
+  "statusDone": {
+    "message": "Done: split into $count$.",
+    "placeholders": {
+      "count": { "content": "$1" }
+    }
+  },
+  "statusNoResponse": {
+    "message": "No response received."
+  },
+  "statusErrorPrefix": {
+    "message": "Error: $msg$",
+    "placeholders": {
+      "msg": { "content": "$1" }
+    }
+  },
+  "statusFailed": {
+    "message": "Failed to run."
+  },
+  "mergeButton": {
+    "message": "Merge into one"
+  },
+  "mergeTitle": {
+    "message": "Gather the windows in scope into a single window"
+  },
+  "statusMerged": {
+    "message": "Merged $count$ tabs into one window.",
+    "placeholders": {
+      "count": { "content": "$1" }
+    }
+  },
+  "errInvalidCount": {
+    "message": "Invalid split count."
+  },
+  "errNotEnoughTabs": {
+    "message": "Not enough tabs (need: $need$ / have: $have$).",
+    "placeholders": {
+      "need": { "content": "$1" },
+      "have": { "content": "$2" }
+    }
+  },
+  "errNothingToMerge": {
+    "message": "Nothing to merge."
+  }
+}

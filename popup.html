@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlexSplit</title>
+  <style>
+    :root {
+      --ink: #13171e;
+      --ink-2: #1a2029;
+      --ink-3: #222b37;
+      --line: #2b3543;
+      --paper: #e8ecf1;
+      --muted: #8492a3;
+      --accent: #ff8a3d;
+      --accent-soft: rgba(255, 138, 61, 0.14);
+      --ok: #5bd6a0;
+      --err: #ff6b6b;
+      --mono: ui-monospace, "Cascadia Mono", "Consolas", "SFMono-Regular", monospace;
+      --sans: system-ui, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { margin: 0; }
+
+    body {
+      width: 268px;
+      padding: 16px 16px 14px;
+      background: var(--ink);
+      color: var(--paper);
+      font-family: var(--mono);
+      /* faint blueprint canvas */
+      background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 22px 22px;
+      background-position: -1px -1px;
+    }
+    /* dim the grid so it reads as texture, not a table */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: var(--ink);
+      opacity: 0.86;
+      z-index: 0;
+    }
+    .panel { position: relative; z-index: 1; }
+
+    /* ---- header / wordmark ---- */
+    .brand {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+    }
+    .brand .flex { color: var(--paper); }
+    .brand .split { color: var(--accent); }
+    .tagline {
+      margin: 3px 0 14px;
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.01em;
+      color: var(--muted);
+    }
+
+    /* ---- section labels (eyebrow) ---- */
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 8px;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .eyebrow::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+
+    /* ---- scope segmented control ---- */
+    .scope {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+      padding: 4px;
+      margin-bottom: 16px;
+      background: var(--ink-2);
+      border: 1px solid var(--line);
+      border-radius: 9px;
+    }
+    .seg {
+      appearance: none;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      padding: 6px 4px;
+      background: transparent;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: color 0.12s, background 0.12s, border-color 0.12s;
+    }
+    .seg:hover { color: var(--paper); }
+    .seg[aria-pressed="true"] {
+      background: var(--accent-soft);
+      border-color: rgba(255, 138, 61, 0.5);
+      color: var(--accent);
+    }
+
+    /* ---- layout preview tiles ---- */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    .tile {
+      appearance: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      padding: 9px 9px 8px;
+      background: var(--ink-2);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.12s, border-color 0.12s, background 0.12s;
+    }
+    .tile:hover {
+      background: var(--ink-3);
+      border-color: rgba(255, 138, 61, 0.55);
+      transform: translateY(-1px);
+    }
+    .tile:active { transform: translateY(0); }
+
+    /* the mini layout: panes the action will create */
+    .preview {
+      display: flex;
+      gap: 2px;
+      height: 30px;
+      padding: 3px;
+      border-radius: 4px;
+      background: rgba(0, 0, 0, 0.22);
+    }
+    .pane {
+      flex: 1;
+      border-radius: 2px;
+      background: rgba(232, 236, 241, 0.22);
+      transition: background 0.12s;
+    }
+    .pane--active { background: var(--accent); }
+    .tile:hover .pane { background: rgba(232, 236, 241, 0.34); }
+    .tile:hover .pane--active { background: var(--accent); }
+
+    .tile-num {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--paper);
+      text-align: center;
+    }
+    .tile[data-count="max"] .tile-num {
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+    }
+
+    /* ---- merge (inverse action) ---- */
+    .merge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      margin-top: 12px;
+      padding: 9px;
+      background: transparent;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      color: var(--paper);
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: border-color 0.12s, background 0.12s, color 0.12s;
+    }
+    .merge:hover {
+      background: var(--ink-2);
+      border-color: rgba(255, 138, 61, 0.55);
+      color: var(--accent);
+    }
+    .merge-ico { width: 15px; height: 15px; flex: none; }
+
+    /* ---- status ---- */
+    #status {
+      margin-top: 14px;
+      min-height: 15px;
+      font-size: 11px;
+      letter-spacing: 0.01em;
+      color: var(--muted);
+    }
+    #status.is-ok { color: var(--ok); }
+    #status.is-err { color: var(--err); }
+
+    /* ---- a11y ---- */
+    .seg:focus-visible,
+    .tile:focus-visible,
+    .merge:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .tile, .seg, .pane, .merge { transition: none; }
+      .tile:hover { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="panel">
+    <div class="brand">
+      <span><span class="flex">FLEX</span><span class="split">SPLIT</span></span>
+    </div>
+    <p class="tagline" data-i18n="panelTagline"></p>
+
+    <!-- 対象範囲 -->
+    <div class="eyebrow" data-i18n="scopeLabel"></div>
+    <div class="scope" role="group" id="scope">
+      <button class="seg" data-scope="active-monitor" aria-pressed="true"
+              data-i18n="scopeMonitorShort" data-i18n-title="scopeActiveMonitor"></button>
+      <button class="seg" data-scope="active-window" aria-pressed="false"
+              data-i18n="scopeBrowserShort" data-i18n-title="scopeActiveWindow"></button>
+      <button class="seg" data-scope="all" aria-pressed="false"
+              data-i18n="scopeAllShort" data-i18n-title="scopeAll"></button>
+    </div>
+
+    <!-- 分割数（クリックで即実行）。preview と番号は popup.js が生成 -->
+    <div class="eyebrow" data-i18n="splitHeading"></div>
+    <div class="grid" id="grid">
+      <button class="tile" data-count="2"><span class="preview" aria-hidden="true"></span><span class="tile-num"></span></button>
+      <button class="tile" data-count="3"><span class="preview" aria-hidden="true"></span><span class="tile-num"></span></button>
+      <button class="tile" data-count="4"><span class="preview" aria-hidden="true"></span><span class="tile-num"></span></button>
+      <button class="tile" data-count="5"><span class="preview" aria-hidden="true"></span><span class="tile-num"></span></button>
+      <button class="tile" data-count="6"><span class="preview" aria-hidden="true"></span><span class="tile-num"></span></button>
+      <button class="tile" data-count="max"><span class="preview" aria-hidden="true"></span><span class="tile-num"></span></button>
+    </div>
+
+    <!-- 逆操作: 散らばったウィンドウを1つに集約 -->
+    <button class="merge" id="mergeBtn" data-i18n-title="mergeTitle">
+      <svg class="merge-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+           stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M1.5 8 H6" /><path d="M4 5.5 L6.5 8 L4 10.5" />
+        <path d="M14.5 8 H10" /><path d="M12 5.5 L9.5 8 L12 10.5" />
+      </svg>
+      <span data-i18n="mergeButton"></span>
+    </button>
+
+    <div id="status" role="status" aria-live="polite"></div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

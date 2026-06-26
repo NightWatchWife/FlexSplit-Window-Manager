@@ -1,0 +1,13 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
+
+# Build / packaging
+*.zip
+*.crx
+*.pem
+node_modules/
+
+# Local-only icon generator (PNGs are committed; the script is not)
+tools/
