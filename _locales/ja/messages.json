@@ -98,5 +98,14 @@
   },
   "errNothingToMerge": {
     "message": "まとめる対象がありません。"
+  },
+  "donateLabel": {
+    "message": "コーヒーで応援"
+  },
+  "donateTitle": {
+    "message": "コーヒー1杯で開発を応援"
+  },
+  "githubTitle": {
+    "message": "GitHub でソースを見る"
   }
 }

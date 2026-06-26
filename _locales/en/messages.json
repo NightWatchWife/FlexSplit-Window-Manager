@@ -98,5 +98,14 @@
   },
   "errNothingToMerge": {
     "message": "Nothing to merge."
+  },
+  "donateLabel": {
+    "message": "Buy me a coffee"
+  },
+  "donateTitle": {
+    "message": "Support development with a coffee"
+  },
+  "githubTitle": {
+    "message": "View the source on GitHub"
   }
 }
