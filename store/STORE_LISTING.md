@@ -2,7 +2,7 @@
 
 Copy-paste source for the store listing. Version: see `manifest.json` (`1.0.1`).
 Screenshots: `store/screenshots/*.png` (1280×800).
-Privacy policy URL: https://github.com/NightWatchWife/FlexSplit-Window-Manager/blob/main/PRIVACY.md
+Privacy policy URL: https://nightwatchwife.github.io/FlexSplit-Window-Manager/PRIVACY_POLICY.html
 Permissions: none (the extension declares no permissions).
 
 ---
