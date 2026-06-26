@@ -1,7 +1,9 @@
 # Chrome Web Store listing — FlexSplit Window Manager
 
-Copy-paste source for the store listing. Version: see `manifest.json` (`1.0.0`).
+Copy-paste source for the store listing. Version: see `manifest.json` (`1.0.1`).
 Screenshots: `store/screenshots/*.png` (1280×800).
+Privacy policy URL: https://github.com/NightWatchWife/FlexSplit-Window-Manager/blob/main/PRIVACY.md
+Permissions: none (the extension declares no permissions).
 
 ---
 
@@ -39,9 +41,9 @@ How to use
 3. Click a layout (2–6 or MAX) to tile instantly — or "Merge into one" to gather.
 
 Privacy
-FlexSplit does not collect, store, or transmit any data. It only uses the
-`tabs` and `windows` permissions to read tab/window positions and move and resize
-your windows on your own machine.
+FlexSplit does not collect, store, or transmit any data. It declares no
+permissions and reads only window/tab geometry to move and resize your windows
+on your own machine — never tab URLs, titles, or page content.
 
 Source code & feedback
 https://github.com/NightWatchWife/FlexSplit-Window-Manager
@@ -84,9 +86,9 @@ FlexSplit Window Manager
 3. レイアウト（2〜6 または MAX）をクリックして即整列。集約は「まとめる」ボタン。
 
 プライバシー
-FlexSplit はいかなるデータも収集・保存・送信しません。`tabs` と `windows` の権限は、
-タブ／ウィンドウの位置を読み取り、お使いの端末上でウィンドウを移動・リサイズするため
-だけに使用します。
+FlexSplit はいかなるデータも収集・保存・送信しません。権限は一切要求せず、
+ウィンドウ／タブの配置情報のみを読み取って、お使いの端末上でウィンドウを移動・
+リサイズします。タブの URL・タイトル・ページ内容にはアクセスしません。
 
 ソースコード・フィードバック
 https://github.com/NightWatchWife/FlexSplit-Window-Manager
