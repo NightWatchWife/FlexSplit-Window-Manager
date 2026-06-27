@@ -113,7 +113,11 @@ function requestSplit(count) {
 
 // ---- まとめる（分割の逆操作） ----
 function requestMerge() {
-  sendAction(basePayload({ type: "MERGE_WINDOWS" }), (res) =>
+  // まとめるは「全部」を選んだときのみ全モニター対象。
+  // それ以外（モニター/ブラウザ）は、このモニター上のウィンドウだけを集約する。
+  // （単一ウィンドウの「ブラウザ」だと集約対象がないため、モニター扱いにする）
+  const scope = currentScope() === "all" ? "all" : "active-monitor";
+  sendAction(basePayload({ type: "MERGE_WINDOWS", scope }), (res) =>
     t("statusMerged", [String(res.count)])
   );
 }
