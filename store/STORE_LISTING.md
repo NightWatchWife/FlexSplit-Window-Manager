@@ -45,6 +45,10 @@ FlexSplit does not collect, store, or transmit any data. It declares no
 permissions and reads only window/tab geometry to move and resize your windows
 on your own machine — never tab URLs, titles, or page content.
 
+Developer
+Arigassama Ryota (solo developer) — profile and other projects:
+https://arigassama.com/about
+
 Source code & feedback
 https://github.com/NightWatchWife/FlexSplit-Window-Manager
 
@@ -89,6 +93,10 @@ FlexSplit Window Manager
 FlexSplit はいかなるデータも収集・保存・送信しません。権限は一切要求せず、
 ウィンドウ／タブの配置情報のみを読み取って、お使いの端末上でウィンドウを移動・
 リサイズします。タブの URL・タイトル・ページ内容にはアクセスしません。
+
+開発者
+ありがっさまりょうた（個人開発者）— プロフィールとほかの運営サイト：
+https://arigassama.com/about
 
 ソースコード・フィードバック
 https://github.com/NightWatchWife/FlexSplit-Window-Manager

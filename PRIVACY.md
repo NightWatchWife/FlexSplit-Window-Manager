@@ -1,6 +1,6 @@
 # Privacy Policy — FlexSplit Window Manager
 
-_Last updated: 2026-06-27_
+_Last updated: 2026-11-03_
 
 ## English
 
@@ -20,6 +20,9 @@ content.
 Because no data is collected, there is nothing to sell, transfer, or use for
 any secondary purpose.
 
+Developer: Arigassama Ryota (solo developer). Profile and other projects:
+https://arigassama.com/about
+
 Contact / source code: https://github.com/NightWatchWife/FlexSplit-Window-Manager
 
 ---
@@ -37,5 +40,8 @@ FlexSplit Window Manager は、いかなるユーザーデータも**収集・�
 参照します。タブの URL・タイトル・ページ内容にはアクセスしません。
 
 データを収集しないため、販売・転送・二次利用の対象となるものはありません。
+
+開発・運営: ありがっさまりょうた（個人開発者）。プロフィールとほかの運営サイト:
+https://arigassama.com/about
 
 お問い合わせ・ソースコード: https://github.com/NightWatchWife/FlexSplit-Window-Manager
